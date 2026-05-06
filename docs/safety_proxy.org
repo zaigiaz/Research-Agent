@@ -1,0 +1,11 @@
+* Why this?
+
+I used Opencode and other agentic harnesses for a while and was fed up with them going into directories where they werent supposed to,
+executing tools in the home directory and just generally making a mess of things with no safety checking at all.
+
+Additionally, local agents tend to have smaller context windows and tend to be smaller, large recursive sub-agent research patterns to to exhaust that window
+fast without any token-limit checks.
+
+I made this to ensure that it couldnt escape out of a specified directory or project directory and to put hard limits on tool calls if needed
+If I let it work autonomously.
+
