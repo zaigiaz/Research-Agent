@@ -7,8 +7,9 @@ Iterative writing to file to save current research task in case we go past conte
 
 - Exa API
 - DuckDuckGo
-- Arxiv API
+- Arxiv API (specific topics)
 - Wikipedia API
+- Reddit API (maybe specific subreddits)
 - Read and write files
 - grep tool
 - glob tool
