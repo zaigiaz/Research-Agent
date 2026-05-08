@@ -1,13 +1,14 @@
 * Overview
 
 local research agent with python-llama-cpp that has proxy that measures tool-calls, number of sub-agents and total token usage.
-Iterative writing to file to save current research task in case we go past context-window, and skills to summarize everything into a basic latex report. 
+Iterative writing to file to save current research task in case we go past context-window, and templates to summarize everything into a basic latex report. 
 
 * Planned Tools
 
 - Exa API
 - DuckDuckGo
 - Arxiv API (specific topics)
+- Google Scholar?
 - Wikipedia API
 - Reddit API (maybe specific subreddits)
 - Read and write files
@@ -15,17 +16,22 @@ Iterative writing to file to save current research task in case we go past conte
 - glob tool
 
 Some type of skill or tool to write and summarize entire research-task into a specific latex file report format.
-The iterative approach is also good because we can just append to research task and then regen report if needed.
+The iterative approach is also good because we can just append to research task and then regenerate report if needed.
 This is needed because local agents dont have massive context windows, speed, or flexibility. 
   
 * Agent Proxy
 
-Used to measure what tool calls each agent and sub-agent will be using and to cut-off if we go past
-safety measures because most harnesses will just preform illegal actions all the time with no ability to add rules
-hard rules and on where you can read or write before executing tools.
+Used to measure what tool calls each agent and sub-agent will be using and to cut-off model if we go near ctx window.
+Safety measures because most harnesses will just preform illegal actions all the time with no ability to add rules, This is so it is pseudo-sandboxed on your system
+hard rules and on where you can read or write before executing tools, etc.
 
 * Research and Reasoning Modes to Implement
 
 - Medieval Disputates / dialectical
 - basic syllogistic
 - research more into other logical forms
+
+* Current Idea
+
+Prompt Model -> consult search backends -> spawn subagents for specific tasks -> search and write to specified files ->
+Top level agent compiles report from template
