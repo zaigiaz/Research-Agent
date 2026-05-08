@@ -11,9 +11,8 @@ Iterative writing to file to save current research task in case we go past conte
 - Google Scholar?
 - Wikipedia API
 - Reddit API (maybe specific subreddits)
-- Read and write files
-- grep tool
-- glob tool
+- Read and write files. 
+- ls to see files
 
 Some type of skill or tool to write and summarize entire research-task into a specific latex file report format.
 The iterative approach is also good because we can just append to research task and then regenerate report if needed.

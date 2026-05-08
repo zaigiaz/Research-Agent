@@ -16,7 +16,7 @@ def init_model() -> Llama:
     )
     return llm
 
-
+# parse command line inputs
 def arg_parsing() -> dict:
     parser = argparse.ArgumentParser()
     parser.add_argument("--model", type=str, required=True)
@@ -25,13 +25,18 @@ def arg_parsing() -> dict:
 
     return vars(parser.parse_args())
 
-llm = init_model()
 
-# Basic Output Object
-output = llm(
-      "Question: Name the planets in the solar system?",
-      max_tokens=24,
-      echo=False 
-)
+def main():
+    llm = init_model()
 
-print(output['choices'][0]["text"])
+    # Basic Output Object
+    output = llm(
+        "Question: Name the planets in the solar system?",
+        max_tokens=24,
+        echo=False 
+    )
+    print(output['choices'][0]["text"])
+
+
+if __name__ == '__main__':
+    main()
