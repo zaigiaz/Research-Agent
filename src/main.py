@@ -2,9 +2,7 @@ from llama_cpp import Llama
 import json
 import sys
 
-# TODO :: Get Basic Text and Response Format in easy chat format kind of way
 # TODO :: Create JSON config file
-# TODO :: Arg-parsing for prompt and each kind of search backend
 # TODO :: Follow Tutorial for tool-calling etc. (pydantic)
 
 # Init basic Llama model
@@ -18,6 +16,7 @@ def init_model() -> Llama:
     return llm
 
 # Basic Output Object
+# TODO :: Get Basic Text and Response Format in easy chat format kind of way
 def llm_response(llm_backend, question):
     output = llm_backend.create_chat_completion(
         messages=[{
@@ -31,6 +30,7 @@ def llm_response(llm_backend, question):
     return output
 
 # parse command line inputs
+# TODO :: Arg-parsing for search backends
 def arg_parsing() -> dict:
     parser = argparse.ArgumentParser()
     parser.add_argument("-m", "--model", type=str, required=True)
