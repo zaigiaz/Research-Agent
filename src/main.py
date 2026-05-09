@@ -19,11 +19,14 @@ def init_model() -> Llama:
 
 # Basic Output Object
 def llm_response(llm_backend, question):
-    output = llm_backend.create_completion(
-         prompt=question,
-         top_p=0.9,
-         temperature=0.5,
-         echo=False
+    output = llm_backend.create_chat_completion(
+        messages=[{
+         "role": "user",
+         "content": question,
+         "top_p": 0.9,
+         "temperature": 0.5,
+         "echo": False
+        }]
     )
     return output
 
@@ -49,7 +52,7 @@ def main():
             sys.exit(0)        
 
         output = llm_response(llm, question)
-        print(output['choices'][0]['text'])
+        print(output['choices'][0]['message']['content'])
 
 if __name__ == '__main__':
     main()
