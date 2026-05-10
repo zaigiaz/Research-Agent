@@ -5,3 +5,7 @@ I want this to be in the haflway point between something more deterministic like
 Each research project would spawn a folder called TASK-<UUID>/ that would then be automatically changed into before we ever initialize the model.
 I am thinking of having a small system prompt that specifys tools (or maybe save that for specific sub-agents?) and also generating some basic files
 that each sub-agent can append to, and one template file for the latex report.
+
+I am also thinking about the structure of each report and how they should look, and how they should be iteratively built.
+Smaller Qwen Models take forever, especially if the report gets up to 4 or more pages. I might need tooling for commands like ~head~
+or ~grep~ to correctly find spot in docs or to just get better structure to not worry about that.

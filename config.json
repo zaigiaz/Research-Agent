@@ -1,0 +1,12 @@
+{
+    [
+	"model": "",
+	"role": "",
+	"top-p": "",
+	"temp": "",
+	"n_ctx": "",
+	"threads": "",
+	"max_tokens": "",
+	"report_type": "", // stuff like .html or .latex, .md ect.	
+    ]
+}

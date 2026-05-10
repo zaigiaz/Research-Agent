@@ -3,7 +3,7 @@
 import pydantic
 from typing import Any
 
-# TODO :: Get basic duckduckgo api implemented
+# TODO :: Get basic duckduckgo api implemented with requests
 # TODO :: think about other search backends and integrate
 
 print("Hello")
