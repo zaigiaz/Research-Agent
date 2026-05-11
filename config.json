@@ -1,12 +1,10 @@
 {
-    [
-	"model": "",
-	"role": "",
-	"top-p": "",
-	"temp": "",
-	"n_ctx": "",
-	"threads": "",
-	"max_tokens": "",
-	"report_type": "", // stuff like .html or .latex, .md ect.	
-    ]
+    "model": "asdfasdf",
+    "role": "user",
+    "top-p": "0.9",
+    "temp": "0.5",
+    "n_ctx": "9000",
+    "threads": "10",
+    "max_tokens": "256",
+    "report_type": "html"
 }

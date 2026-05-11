@@ -4,4 +4,4 @@ target:
 	python3 src/main.py
 
 test:
-	python3 -m py_compile src/main.py
+	python3 -m py_compile src/main.py src/task.py

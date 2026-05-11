@@ -5,7 +5,6 @@ import os
 import logging
 import sys
 
-# TODO :: add function to read config file
 # TODO :: Follow Tutorial for tool-calling etc. (pydantic)
 # TODO :: create class wrapper around llama-python stuff
 
@@ -66,6 +65,36 @@ def llm_response(llm_backend, question):
     return output
 
 
+def read_config(file_path: str) -> dict:
+    """
+    read json config file in project dir and return values specified as dict
+    if not specified then it will be None
+    """
+    try:
+        with open(file_path, mode='r') as json_file:
+            data = json.load(json_file)
+
+            config = {
+                'model': data.get('model', None),
+                'role': data.get('top-p', None),
+                'ctx': data.get('ctx', None),
+                'top-p': data.get('top-p', None),
+                'max-tokens': data.get('max-tokens', None),
+	        'report_type': data.get('report_type', None),
+            }
+
+            logger.info("config file read")
+            return config
+
+    except FileNotFoundError:
+        print("File not found!")
+    except JSONDecodeError:
+        print("Invalid JSON format!")
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
+
+    
+
 def arg_parsing() -> dict:
     """
     command line parsing for local model params and search backends
@@ -87,6 +116,8 @@ def arg_parsing() -> dict:
     
 def main():
     llm = init_model()
+
+    config_dict = read_config("./config.json")
 
     # basic loop for questioning model
     while True:
