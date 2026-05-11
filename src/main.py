@@ -5,22 +5,22 @@ import os
 import logging
 import sys
 
+# TODO :: create class wrapper around llama-cpp-python stuff
 # TODO :: Follow Tutorial for tool-calling etc. (pydantic)
-# TODO :: create class wrapper around llama-python stuff
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
 logger.info('Started')
 
-def init_model():
+def init_model(config: dict) -> Llama:
     """
     Basic Model Init, read params from json config later
     """
     with llama_model_log():
         llm = Llama(
-            model_path="/home/zaigiaz/third_party/ai_models/Qwen/Qwen3.5-9B-Q6_K.gguf",
-            n_ctx=9056,
-            verbose=True,
+            model_path = config.get('model'),
+            n_ctx      = config.get('n_ctx'),
+            verbose    = True,
         )
     return llm
 
@@ -45,8 +45,7 @@ def llama_model_log(file_path="./llama.log"):
         log_file.close()
 
 
-# TODO :: Get Basic Text and Response Format in easy chat format kind of way
-def llm_response(llm_backend, question):
+def llm_response(llm_backend, question: str, config: dict):
     """
     get response output from model given params
     """
@@ -54,10 +53,10 @@ def llm_response(llm_backend, question):
     with llama_model_log():
         output = llm_backend.create_chat_completion(
             messages=[{
-                "role": "user",
+                "role": config.get('role'),
                 "content": question,
-                "top_p": 0.9,
-                "temperature": 0.5,
+                "top_p": config.get('top_p'),
+                "temperature": config.get('temp'),
                 "echo": False
             }]
         )
@@ -76,9 +75,9 @@ def read_config(file_path: str) -> dict:
 
             config = {
                 'model': data.get('model', None),
-                'role': data.get('top-p', None),
-                'ctx': data.get('ctx', None),
-                'top-p': data.get('top-p', None),
+                'role': data.get('role', None),
+                'n_ctx': data.get('n_ctx', None),
+                'top_p': data.get('top_p', None),
                 'max-tokens': data.get('max-tokens', None),
 	        'report_type': data.get('report_type', None),
             }
@@ -94,7 +93,6 @@ def read_config(file_path: str) -> dict:
         print(f"An error occurred: {str(e)}")
 
     
-
 def arg_parsing() -> dict:
     """
     command line parsing for local model params and search backends
@@ -115,9 +113,9 @@ def arg_parsing() -> dict:
 
     
 def main():
-    llm = init_model()
 
     config_dict = read_config("./config.json")
+    llm = init_model(config_dict)
 
     # basic loop for questioning model
     while True:
@@ -126,7 +124,10 @@ def main():
         if not question:
             sys.exit(0)        
 
-        output = llm_response(llm, "give me a short sentence in old english, a greeting would be nice!")
+        # temp test message
+        q = "give me a short sentence in old english, a greeting would be nice!"
+        output = llm_response(llm, q, config_dict)
+
         print(output['choices'][0]['message']['content'])
 
 if __name__ == '__main__':

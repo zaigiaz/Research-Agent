@@ -4,7 +4,7 @@ from typing import Any
 
 # TODO :: arxiv or wikipedia api for more narrowed search
 
-results = DDGS().text("butterfly wing patterns 2026", max_results=5)
+re1sults = DDGS().text("butterfly wing patterns 2026", max_results=5)
 
 for i,v in enumerate(results):
    print("--------------------")
