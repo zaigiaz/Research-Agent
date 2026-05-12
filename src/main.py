@@ -24,9 +24,9 @@ def init_model(config: dict) -> Llama:
         )
     return llm
 
-@contextmanager
 # TODO :: have this log in the dedicated <Task> Folder and make sure we get full output instead of cutoff
-def llama_model_log(file_path="./llama.log"):
+@contextmanager
+def llama_model_log(file_path="./llama.log") -> None:
     """
     redirect output of llama.cpp model to a log called model.log
     """
@@ -112,7 +112,7 @@ def arg_parsing() -> dict:
     return vars(parser.parse_args())
 
     
-def main():
+def main() -> None:
 
     config_dict = read_config("./config.json")
     llm = init_model(config_dict)
@@ -129,6 +129,7 @@ def main():
         output = llm_response(llm, q, config_dict)
 
         print(output['choices'][0]['message']['content'])
+
 
 if __name__ == '__main__':
     main()

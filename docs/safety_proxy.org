@@ -9,3 +9,8 @@ fast without any token-limit checks.
 I made this to ensure that it couldnt escape out of a specified directory or project directory and to put hard limits on tool calls if needed
 If I let it work autonomously.
 
+* How it works
+
+Whenever I parse a tool-call with pydantic, instead of just executing the tool-call, the proxy will moniter things like
+how many tool-calls it made, what directories its in, etc, to make stop or start decision.
+
