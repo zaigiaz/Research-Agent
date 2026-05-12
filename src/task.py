@@ -10,10 +10,17 @@ import os
 # TODO :: Tool-Calling Cleanup?
 # TODO :: create task folder, etc
 
-SYSTEM_PROMPT_PREFIX = "You're a Deep Research Agent meant to act as a search engine for academic purposes. You have access to various search backends, pose questions and think in a clear and concise manner."
+SYSTEM_PROMPT_PREFIX = r"""You're a Deep Research Agent meant to act as a search engine for academic purposes.
+You have access to various search backends, pose questions and think in a clear and concise manner."""
 QUESTION = "You will do deep research around {Prompt Question}" 
 SETS = "Create {SUB_AGENT_NUMBER} Questions-Sets, each of these question-sets should be json arrays in a simple format with just the questions"
 
+
+def read_template():
+    """
+    read a template file from the reports/ folder in project root
+    """
+    
 
 def create_system_message(prefix: str, sets: str, prompt: str) -> str:
     """

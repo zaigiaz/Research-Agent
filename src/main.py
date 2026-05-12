@@ -125,7 +125,7 @@ def main():
             sys.exit(0)        
 
         # temp test message
-        q = "give me a short sentence in old english, a greeting would be nice!"
+        q = "you are local agent who can do bash commmands, by calling {tool-call: '<bash_command>'}, be concise and show the current directory and files with tool call"
         output = llm_response(llm, q, config_dict)
 
         print(output['choices'][0]['message']['content'])

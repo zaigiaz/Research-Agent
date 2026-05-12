@@ -1,0 +1,9 @@
+#+TITLE: Research Report
+#+AUTHOR: Research Agent
+#+OPTIONS: toc:nil
+
+* Overview
+
+* First Point
+
+* Counter First Point
