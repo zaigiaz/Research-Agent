@@ -1,3 +1,6 @@
 # ignore all executables and personal notes
 *.exe
 *.out
+
+llama.log
+config.json

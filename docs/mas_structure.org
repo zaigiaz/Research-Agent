@@ -1,0 +1,6 @@
+* overview
+
+either we need to use python -m llama.server and pass in arguments and use the openai package
+or we need to just have a linear system where we load and unload multiple different models.
+Currently no way to have shared body or seperate ctx window for sub-agents with this api?
+
