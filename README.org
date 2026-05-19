@@ -6,32 +6,36 @@ support for search backends like ddgs, arxiv, and wikipedia.
 
 * Planned Tools
 
+** search backends
 - DuckDuckGo search (Done)
 - Arxiv API 
 - Google Scholar?
 - Wikipedia API
 - Reddit API (maybe specific subreddits)
-- Read and write files. 
-- ls to see files
 
-Some type of skill or tool to write and summarize entire research-task into a specific latex file report format.
-The iterative approach is also good because we can just append to research task and then regenerate report if needed.
-This is needed because local agents dont have massive context windows, speed, or flexibility. 
+** Tools
+- Read and write files. 
+- ls to see files.
+- Claude Codes edit tool to iteratively edit reports
+
+I am either going to have a limited tool set or just allow it to have a small bash environment that it can call into.
+I am probably going to only have two search backends for now.
   
 * Tool Proxy
 
 Used to measure what tool calls each agent and sub-agent will be using and to cut-off model if we go near ctx window.
-Include's Safety measures because most harnesses will just preform illegal actions all the time with no ability to add rules, This is so it is pseudo-sandboxed on your system
-with hard rules and on where you can read or write before executing tools, etc. To prevent unnecessary actions or downloading
+Include's Safety measures, because most harnesses will just preform illegal actions all the time with no ability to add rules, This is so it is pseudo-sandboxed on your system
+with hard rules and on where you can read or write before executing tools, etc. To prevent unnecessary actions or downloading stuff you don't need.
 
 * Research and Reasoning Modes to Implement
 
 - Basic Research / Beginner learner format
 - Medieval Disputates / dialectical
 - basic syllogistic
-- research more into other logical forms
+- research more into other logical forms and formats
 
-* Current Idea
+* Usage
 
-Prompt Model -> consult search backends -> spawn subagents for specific tasks -> make tool calls -> go to tool-call proxy -> search and write to specified files if approved ->
-Top level agent compiles report from all research into given template file.
+This project is intended to do background work on whatever field or question you have and then compile a professional looking report for you to read later on.
+Currently all the reports are in .org mode format as this is for my personal use, although changing the prompts and making the report .md and then using pandoc to compile
+to latex shouldn't be hard.

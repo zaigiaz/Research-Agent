@@ -11,12 +11,15 @@ def init_model(config: dict):
     """
     Basic Model Init, read params from json config later
     """
+    cfg.logger.info("Loading llama.cpp model")
     with llama_model_log():
         llm = Llama(
             model_path = config.get('model'),
             n_ctx      = config.get('n_ctx'),
             verbose    = True,
         )
+    
+    cfg.logger.info("llama.cpp model loaded succesfully")
     return llm
 
 # TODO :: have this log in the dedicated <Task> Folder and make sure we get full output instead of cutoff
