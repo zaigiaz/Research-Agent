@@ -1,5 +1,6 @@
 import json
 import logging
+import argparse
 
 logger = logging.getLogger(__name__)
 logging.basicConfig(level=logging.INFO, format='%(levelname)s: %(message)s')
@@ -28,7 +29,7 @@ def read_config(file_path: str) -> dict:
 
     except FileNotFoundError:
         print("File not found!")
-    except JSONDecodeError:
+    except json.JSONDecodeError:
         print("Invalid JSON format!")
     except Exception as e:
         print(f"An error occurred: {str(e)}")

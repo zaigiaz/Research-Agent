@@ -7,7 +7,7 @@ import config as cfg
 # TODO :: rich interface?
 # TODO :: sub-agents with llama_pool
 
-def init_model(config: dict) -> Llama:
+def init_model(config: dict):
     """
     Basic Model Init, read params from json config later
     """
@@ -39,7 +39,7 @@ def llm_response(llm_backend, question: str, config: dict):
     return output
 
 @contextmanager
-def llama_model_log(file_path="./llama.log") -> None:
+def llama_model_log(file_path="./llama.log"):
     """
     redirect output of llama.cpp model to a log called model.log
     """
