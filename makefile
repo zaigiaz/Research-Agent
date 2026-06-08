@@ -5,3 +5,6 @@ target:
 
 test:
 	python3 -m py_compile src/main.py src/task.py
+
+check:
+	ty check
