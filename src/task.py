@@ -6,9 +6,8 @@ import os
 
 # TODO :: Latex Report Prompt
 # TODO :: Generate Questions for Sub-Agents Prompt
-# TODO :: System Startup Prompt
+# TODO :: System Startup Prompt, need tool-call example so we dont have parsing errors with pydantic
 # TODO :: Tool-Calling Cleanup?
-# TODO :: create task folder, etc
 
 SYSTEM_PROMPT_PREFIX = r"""You're a Deep Research Agent meant to act as a search engine for academic purposes.
 You have access to various search backends, pose questions and think in a clear and concise manner."""
@@ -21,7 +20,6 @@ def read_template():
     read a template file from the reports/ folder in project root
     """
     
-
 def create_system_message(prefix: str, sets: str, prompt: str) -> str:
     """
     Create system prompt message for the main model and return
@@ -33,7 +31,6 @@ def report_prompt() -> str:
     prompt and settings for the org-mode report file and its syntax
     """
     raise NotImplementedError 
-
 
 def create_task(prompt) -> bool:
     """

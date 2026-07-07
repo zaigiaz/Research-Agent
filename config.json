@@ -1,10 +1,10 @@
 {
-    "model": "asdfasdf",
+    "model": "<file_path_here>",
     "role": "user",
-    "top-p": "0.9",
-    "temp": "0.5",
-    "n_ctx": "9000",
-    "threads": "10",
-    "max_tokens": "256",
+    "top-p": 0.9,
+    "temp": 0.5,
+    "n_ctx": 9000,
+    "threads": 10,
+    "max_tokens": 256,
     "report_type": "html"
 }

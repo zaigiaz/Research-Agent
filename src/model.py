@@ -44,7 +44,7 @@ def llm_response(llm_backend, question: str, config: dict):
 @contextmanager
 def llama_model_log(file_path="./llama.log"):
     """
-    redirect output of llama.cpp model to a log called model.log
+    redirect output of llama.cpp model to a log called llama.log
     """
     log_file = open(file_path, 'w')                   
 
@@ -55,6 +55,7 @@ def llama_model_log(file_path="./llama.log"):
         sys.stdout = log_file
         sys.stderr = log_file
         yield
+
     finally:
         sys.stdout = original_stdout
         sys.stderr = original_stderr
